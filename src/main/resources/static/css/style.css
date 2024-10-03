@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    background-color: #f8f8f8;
+}
+.form-container {
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*form {*/
+/*    width: 100%;*/
+/*    max-width: 600px;*/
+/*}*/
+header{
+    height: 80px;
+    background-color: #ffffff;
+}
+.header-text{
+    text-shadow: 0.5px 0.5px #0a0965;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

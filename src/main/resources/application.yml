@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: urspi-international
+  datasource:
+#    url: jdbc:postgresql://localhost/international_db
+#    username: postgres
+#    password: postgres
+    url: jdbc:postgresql://172.10.10.51/international_db
+    username: postgres
+    password: urspi2022
+    driver-class-name: org.postgresql.Driver
+
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+server:
+  port: 8080
