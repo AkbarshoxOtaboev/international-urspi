@@ -2,12 +2,12 @@ spring:
   application:
     name: urspi-international
   datasource:
-#    url: jdbc:postgresql://localhost/international_db
-#    username: postgres
-#    password: postgres
-    url: jdbc:postgresql://172.10.10.51/international_db
+    url: jdbc:postgresql://localhost/international_db
     username: postgres
-    password: urspi2022
+    password: postgres
+#    url: jdbc:postgresql://172.10.10.51/international_db
+#    username: postgres
+#    password: urspi2022
     driver-class-name: org.postgresql.Driver
 
   servlet:
