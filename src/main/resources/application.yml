@@ -1,6 +1,8 @@
 spring:
   application:
     name: urspi-international
+  messages:
+    basename: messages
   datasource:
     url: jdbc:postgresql://localhost/international_db
     username: postgres

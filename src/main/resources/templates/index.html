@@ -31,52 +31,51 @@
 </header>
 
 <div class="d-flex justify-content-center text-center mt-5">
-    <h3 class="header-text">Xorijiy talabalar uchun hujjat <br> topshirish platformasi</h3>
+    <h3 class="header-text" th:text="#{title}" >Xorijiy talabalar uchun hujjat <br> topshirish platformasi</h3>
 </div>
 
 <div class="container form-container mt-5 mb-5">
     <div>
         <form method="post" action="/create/application" enctype="multipart/form-data">
-            <h5>Shaxsiy ma'lumotlar</h5>
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="firstName" class="form-label">Ism</label>
-                    <input type="text" class="form-control" id="firstName"  placeholder="Ism kiriting" name="firstName" th:field="${studentDTO.firstName}">
+                    <label for="firstName" class="form-label" th:text="#{firstname}"></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" th:field="${studentDTO.firstName}">
                 </div>
                 <div class="col-md-6">
-                    <label for="lastName" class="form-label">Familiya</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Familiya kiriting" name="lastName" th:field="${studentDTO.lastName}">
+                    <label for="lastName" class="form-label" th:text="#{lastname}"></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" th:field="${studentDTO.lastName}">
                 </div>
             </div>
 
             <div class="mb-3">
-                <label for="email" class="form-label">Elektron pochta</label>
-                <input type="email" class="form-control" id="email" placeholder="Elektron pochtangizni kiriting" name="email" th:field="${studentDTO.email}">
+                <label for="email" class="form-label" th:text="#{email}"></label>
+                <input type="email" class="form-control" id="email" name="email" th:field="${studentDTO.email}">
             </div>
 
             <div class="mb-3">
-                <label for="phone" class="form-label">Telefon raqami</label>
-                <input type="tel" class="form-control" id="phone" placeholder="Telefon raqamingizni kiriting" name="phone" th:field="${studentDTO.phone}">
+                <label for="phone" class="form-label" th:text="#{phone}"></label>
+                <input type="tel" class="form-control" id="phone" name="phone" th:field="${studentDTO.phone}">
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="birthDate" class="form-label">Tug'ilgan kun</label>
+                    <label for="birthDate" class="form-label" th:text="#{birthDate}"></label>
                     <input type="date" class="form-control" id="birthDate" th:field="${studentDTO.birthDate}" name="birthDate">
                 </div>
                 <div class="col-md-6">
-                    <label for="gender" class="form-label">Jins</label>
+                    <label for="gender" class="form-label" th:text="#{gender}"></label>
                     <select class="form-select" id="gender" name="gender" th:field="${studentDTO.gender}">
-                        <option value="">Tanlang</option>
-                        <option value="male">Erkak</option>
-                        <option value="female">Ayol</option>
+                        <option value="" th:text="#{select}"></option>
+                        <option value="male" th:text="#{male}"></option>
+                        <option value="female" th:text="#{female}"></option>
                     </select>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label for="country" class="form-label">Mamlakatingizni kiriting</label>
-                <input type="text" class="form-control" name="country" id="country" placeholder="Mamlakatni kiriting" th:field="${studentDTO.country}">
+                <label for="country" class="form-label" th:text="#{country}"></label>
+                <input type="text" class="form-control" name="country" id="country" th:field="${studentDTO.country}">
             </div>
             <div>
                 <h5>Ta'lim ma'lumotlari</h5>
