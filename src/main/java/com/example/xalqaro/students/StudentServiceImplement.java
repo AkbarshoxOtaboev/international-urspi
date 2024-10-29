@@ -28,11 +28,12 @@ public class StudentServiceImplement implements StudentService {
                 .studyType(studentDTO.getStudyType())
                 .studyDirection(studentDTO.getStudyDirection())
                 .imageLink(imageLink)
-                .idCardFileLink(studentDTO.getIdCardSeries())
+                .idCardSeries(studentDTO.getIdCardSeries())
                 .idCardNumber(studentDTO.getIdCardNumber())
                 .idCardFileLink(idCardFileLink)
                 .diplomaOrCertificateLink(diplomaOrCertificateLink)
                 .testimonyFileLink(testimonyFileLink)
+                .status(1)
                 .build();
         studentRepository.save(student);
     }

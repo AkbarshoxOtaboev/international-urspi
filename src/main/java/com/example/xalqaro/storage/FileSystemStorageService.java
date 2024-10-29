@@ -72,7 +72,7 @@ public class FileSystemStorageService implements StorageService {
     }
     private String getAndValidateFilename(MultipartFile file) {
         if (file.isEmpty()) {
-            throw new StorageException("Faylni yuklashdaa xatolik");
+            return "no_image.png";
         }
         String name = file.getOriginalFilename();
         int ind = -1;
