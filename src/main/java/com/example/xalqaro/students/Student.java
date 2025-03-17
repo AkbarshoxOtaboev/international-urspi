@@ -26,6 +26,7 @@ public class Student {
     private String email;
     @Column(unique = true, nullable = false)
     private String phone;
+    private String whatsapp;
     private String birthDate;
     private String gender;
     private String country;

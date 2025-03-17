@@ -9,6 +9,7 @@ public class StudentDTO {
     private String lastName;
     private String email;
     private String phone;
+    private String whatsapp;
     private String birthDate;
     private String gender;
     private String country;

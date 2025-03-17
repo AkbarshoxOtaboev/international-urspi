@@ -23,6 +23,7 @@ public class StudentServiceImplement implements StudentService {
                 .email(studentDTO.getEmail())
                 .phone(studentDTO.getPhone())
                 .birthDate(studentDTO.getBirthDate())
+                .whatsapp(studentDTO.getWhatsapp())
                 .gender(studentDTO.getGender())
                 .country(studentDTO.getCountry())
                 .studyType(studentDTO.getStudyType())

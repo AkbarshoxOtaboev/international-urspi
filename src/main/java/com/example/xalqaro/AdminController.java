@@ -29,6 +29,7 @@ public class AdminController {
     public String admin(Model model) {
         User user =  userService.getCurrentUser();
         model.addAttribute("user", user);
+
         return "admin";
     }
 
@@ -39,5 +40,10 @@ public class AdminController {
         List<Student> students = studentService.getStudents();
         model.addAttribute("students", students);
         return "students";
+    }
+
+    @GetMapping("/success")
+    public String success(Model model) {
+        return "succes";
     }
 }
