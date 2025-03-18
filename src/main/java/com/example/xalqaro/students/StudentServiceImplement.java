@@ -14,7 +14,6 @@ public class StudentServiceImplement implements StudentService {
     @Override
     public void addStudent(StudentDTO studentDTO) {
         String imageLink = storageService.store(studentDTO.getImageLink());
-        String idCardFileLink = storageService.store(studentDTO.getIdCardFileLink());
         String diplomaOrCertificateLink = storageService.store(studentDTO.getDiplomaOrCertificateLink());
         String testimonyFileLink = storageService.store(studentDTO.getTestimonyFileLink());
         var student = Student.builder()
@@ -29,9 +28,6 @@ public class StudentServiceImplement implements StudentService {
                 .studyType(studentDTO.getStudyType())
                 .studyDirection(studentDTO.getStudyDirection())
                 .imageLink(imageLink)
-                .idCardSeries(studentDTO.getIdCardSeries())
-                .idCardNumber(studentDTO.getIdCardNumber())
-                .idCardFileLink(idCardFileLink)
                 .diplomaOrCertificateLink(diplomaOrCertificateLink)
                 .testimonyFileLink(testimonyFileLink)
                 .status(1)

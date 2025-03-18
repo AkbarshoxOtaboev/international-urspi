@@ -3,7 +3,6 @@ package com.example.xalqaro;
 import com.example.xalqaro.students.Student;
 import com.example.xalqaro.students.StudentService;
 import com.example.xalqaro.user.User;
-import com.example.xalqaro.user.UserRepository;
 import com.example.xalqaro.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,7 +28,6 @@ public class AdminController {
     public String admin(Model model) {
         User user =  userService.getCurrentUser();
         model.addAttribute("user", user);
-
         return "admin";
     }
 
@@ -40,10 +38,5 @@ public class AdminController {
         List<Student> students = studentService.getStudents();
         model.addAttribute("students", students);
         return "students";
-    }
-
-    @GetMapping("/success")
-    public String success(Model model) {
-        return "succes";
     }
 }

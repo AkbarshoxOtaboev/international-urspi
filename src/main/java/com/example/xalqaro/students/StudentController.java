@@ -1,5 +1,7 @@
 package com.example.xalqaro.students;
 
+import com.example.xalqaro.direction.Direction;
+import com.example.xalqaro.direction.DirectionService;
 import com.example.xalqaro.user.User;
 import com.example.xalqaro.user.UserService;
 import jakarta.validation.Valid;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("")
 @RequiredArgsConstructor
@@ -21,11 +26,14 @@ public class StudentController {
 
     private final StudentService studentService;
     private final UserService userService;
+    private final DirectionService directionService;
 
     @GetMapping("/")
     public String index(Model model) {
         StudentDTO studentDTO = new StudentDTO();
         model.addAttribute("studentDTO", studentDTO);
+        List<Direction> directions = directionService.findAll();
+        model.addAttribute("directions", directions);
         return "index";
     }
 
@@ -41,6 +49,10 @@ public class StudentController {
             return "index";
         }
         studentService.addStudent(studentDTO);
-        return "redirect:/?success";
+        return "redirect:/success";
+    }
+    @GetMapping("/success")
+    public String success(Model model) {
+        return "success";
     }
 }

@@ -6,7 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
+import org.hibernate.annotations.UpdateTimestamp;
+import java.time.Instant;
 
 @Data
 @Entity
@@ -33,11 +36,12 @@ public class Student {
     private String studyType;
     private String studyDirection;
     private String imageLink;
-    private String idCardSeries;
-    private String idCardNumber;
-    private String idCardFileLink;
     private String diplomaOrCertificateLink ;
     private String testimonyFileLink;
     private Integer status;
+    @CreationTimestamp(source = SourceType.DB)
+    private Instant createdAt;
+    @UpdateTimestamp(source = SourceType.DB)
+    private Instant updatedAt;
 
 }

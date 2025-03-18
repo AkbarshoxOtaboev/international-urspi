@@ -19,17 +19,16 @@
                 <img src="/image/urspi_new.png" alt="logo" width="70px">
                 <span style="font-weight: 900" th:text="#{urspi}"></span>
             </div>
-            <label for="lang"></label><select id="lang" class="form-select" style="width: 100px">
-                <option value="uz" name="uz">uz</option>
-<!--                <option value="ru" name="ru">ru</option>-->
-                <option value="eng" name="eng">eng</option>
-            </select>
+            <select id="lang" class="form-select" style="width: 100px">
+            <option value="uz" name="uz">uz</option>
+            <option value="eng" name="eng">eng</option>
+        </select>
         </div>
     </div>
 </header>
 
 <div class="d-flex justify-content-center text-center mt-5">
-    <h3 class="header-text" th:text="#{title}" ></h3>
+    <h3 class="header-text" th:text="#{title}"></h3>
 </div>
 
 <div class="container form-container mt-5 mb-5">
@@ -38,11 +37,13 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="firstName" class="form-label" th:text="#{firstname}"></label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}" required>
+                    <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}"
+                           required>
                 </div>
                 <div class="col-md-6">
                     <label for="lastName" class="form-label" th:text="#{lastname}"></label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}" required>
+                    <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}"
+                           required>
                 </div>
             </div>
             <div class="row mb-3">
@@ -56,8 +57,10 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="whatsapp" class="form-label" th:text="#{whatsapp}"></label>
-                        <input type="text" class="form-control" id="whatsapp" name="whatsapp" th:field="*{whatsapp}" required>
-                        <p th:if="${#fields.hasErrors('whatsapp')}" th:errorclass="text-danger" th:errors="*{whatsapp}"></p>
+                        <input type="text" class="form-control" id="whatsapp" name="whatsapp" th:field="*{whatsapp}"
+                               required>
+                        <p th:if="${#fields.hasErrors('whatsapp')}" th:errorclass="text-danger"
+                           th:errors="*{whatsapp}"></p>
                     </div>
                 </div>
             </div>
@@ -72,14 +75,16 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="country" class="form-label" th:text="#{country}"></label>
-                        <input type="text" class="form-control" name="country" id="country" th:field="*{country}" required>
+                        <input type="text" class="form-control" name="country" id="country" th:field="*{country}"
+                               required>
                     </div>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="birthDate" class="form-label" th:text="#{birthDate}"></label>
-                    <input type="date" class="form-control" id="birthDate" th:field="*{birthDate}" name="birthDate" required>
+                    <input type="date" class="form-control" id="birthDate" th:field="*{birthDate}" name="birthDate"
+                           required>
                 </div>
                 <div class="col-md-6">
                     <label for="gender" class="form-label" th:text="#{gender}"></label>
@@ -92,37 +97,55 @@
                 </div>
             </div>
             <div>
-                <h5 th:text="#{educationInfo}"></h5>
-                <div class="mb-3">
-                    <label for="educationType" class="form-label" th:text="#{educationType}"></label>
-                    <select class="form-select" id="educationType" name="studyType" th:field="${studentDTO.studyType}" required>
-                        <option value="" th:text="#{selectEducationType}" ></option>
-                        <option value="bakalavr" th:text="#{bachelor}"></option>
-                        <option value="magistr" th:text="#{mastersDegree}"></option>
-                    </select>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="educationType" class="form-label" th:text="#{educationType}"></label>
+                            <select class="form-select" id="educationType" name="studyType" th:field="*{studyType}"
+                                    required>
+                                <option value="" th:text="#{selectEducationType}"></option>
+                                <option value="bakalavr" th:text="#{bachelor}"></option>
+                                <option value="magistr" th:text="#{mastersDegree}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="specialization" class="form-label" th:text="#{major}"></label>
+                            <select class="form-select" id="specialization" name="studyDirection"
+                                    th:field="*{studyDirection}" required>
+                                <option value="" th:text="#{major}"></option>
+                                <option th:each="direction:${directions}"
+                                        th:value="${direction.id}"
+                                        th:name="${direction}"
+                                        th:text="${direction.name}"></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="specialization" class="form-label" th:text="#{major}"></label>
-                    <input type="text" class="form-control" id="specialization"  name="studyDirection" th:field="${studentDTO.studyDirection}" required>
-                </div>
+
                 <div class="mb-3">
                     <label for="photo" class="form-label" th:text="#{image}" required></label>
-                    <input type="file" class="form-control" id="photo" name="imageLink" th:field="${studentDTO.imageLink}">
+                    <input type="file" class="form-control" id="photo" name="imageLink"
+                           th:field="${studentDTO.imageLink}">
                 </div>
                 <div class="mb-3">
                     <label for="diplomaFile" class="form-label" th:text="#{diplomaOrCertificateFile}"></label>
-                    <input type="file" class="form-control" id="diplomaFile" name="diplomaOrCertificateLink" th:field="${studentDTO.diplomaOrCertificateLink}" required >
+                    <input type="file" class="form-control" id="diplomaFile" name="diplomaOrCertificateLink"
+                           th:field="${studentDTO.diplomaOrCertificateLink}" required>
                 </div>
                 <div class="mb-3">
                     <label for="residencePermit" class="form-label" th:text="#{uzb}"></label>
-                    <input type="file" class="form-control" id="residencePermit" name="testimonyFileLink" th:field="${studentDTO.testimonyFileLink}">
+                    <input type="file" class="form-control" id="residencePermit" name="testimonyFileLink"
+                           th:field="${studentDTO.testimonyFileLink}">
                 </div>
 
                 <h5 class="mt-3" th:text="#{agreement}"></h5>
                 <p class="lead" th:text="#{policy}"></p>
 
-                <button type="submit" class="btn btn-primary w-100" th:text="#{sendBtn}"></button>
+
+                <button type="submit" class="btn btn-primary w-100" th:text="#{sendBtn}" onclick="return confirm('Men roziman')"></button>
 
             </div>
         </form>
@@ -130,7 +153,15 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    document.getElementById("lang").addEventListener("change", function() {
+    document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedLang = urlParams.get("lang");
+
+        if (selectedLang) {
+            document.getElementById("lang").value = selectedLang;
+        }
+    });
+    document.getElementById("lang").addEventListener("change", function () {
         const selectedValue = this.value;
         if (selectedValue) {
             window.location.href = `?lang=${selectedValue}`;

@@ -16,9 +16,6 @@ public class StudentDTO {
     private String studyType;
     private String studyDirection;
     private MultipartFile imageLink;
-    private String idCardSeries;
-    private String idCardNumber;
-    private MultipartFile idCardFileLink;
     private MultipartFile diplomaOrCertificateLink ;
     private MultipartFile testimonyFileLink;
 }

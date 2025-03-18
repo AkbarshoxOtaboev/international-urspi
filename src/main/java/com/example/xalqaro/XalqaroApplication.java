@@ -24,8 +24,8 @@ public class XalqaroApplication {
             return args -> {
                 var admin = User.builder()
                         .username("admin")
-                        .password(passwordEncoder.encode("admin"))
-                        .fullName("Akbar Otaboev")
+                        .password(passwordEncoder.encode("urspi2022"))
+                        .fullName("Administrator")
                         .role(Role.ADMIN)
                         .status(1)
                         .build();
