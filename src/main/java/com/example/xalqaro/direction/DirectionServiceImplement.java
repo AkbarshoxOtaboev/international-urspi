@@ -34,6 +34,11 @@ public class DirectionServiceImplement implements DirectionService {
     }
 
     @Override
+    public List<Direction> fetchActiveDirections() {
+        return directionRepository.fetchActiveDirection();
+    }
+
+    @Override
     public void update(Direction direction, Long id) {
         Direction directionToUpdate = findById(id);
         directionToUpdate.setName(direction.getName());

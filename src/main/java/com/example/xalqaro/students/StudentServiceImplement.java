@@ -54,4 +54,11 @@ public class StudentServiceImplement implements StudentService {
     public boolean existsByPhone(String phone) {
         return studentRepository.existsByPhone(phone);
     }
+
+    @Override
+    public void changeStudentStatus(Long id, Integer status) {
+        Student student = getStudent(id);
+        student.setStatus(status);
+        studentRepository.saveAndFlush(student);
+    }
 }

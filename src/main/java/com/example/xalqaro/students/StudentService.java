@@ -8,4 +8,5 @@ public interface StudentService {
     Student getStudent(Long id);
     boolean existsByEmail(String email);
     boolean existsByPhone(String phone);
+    void changeStudentStatus(Long id, Integer status);
 }

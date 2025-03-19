@@ -57,10 +57,7 @@
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="whatsapp" class="form-label" th:text="#{whatsapp}"></label>
-                        <input type="text" class="form-control" id="whatsapp" name="whatsapp" th:field="*{whatsapp}"
-                               required>
-                        <p th:if="${#fields.hasErrors('whatsapp')}" th:errorclass="text-danger"
-                           th:errors="*{whatsapp}"></p>
+                        <input type="text" class="form-control" id="whatsapp" name="whatsapp" th:field="*{whatsapp}">
                     </div>
                 </div>
             </div>
@@ -116,7 +113,7 @@
                                     th:field="*{studyDirection}" required>
                                 <option value="" th:text="#{major}"></option>
                                 <option th:each="direction:${directions}"
-                                        th:value="${direction.id}"
+                                        th:value="${direction.name}"
                                         th:name="${direction}"
                                         th:text="${direction.name}"></option>
                             </select>
@@ -126,26 +123,29 @@
 
 
                 <div class="mb-3">
-                    <label for="photo" class="form-label" th:text="#{image}" required></label>
-                    <input type="file" class="form-control" id="photo" name="imageLink"
+                    <label for="photo" class="form-label" th:text="#{image}"></label>
+                    <input type="file" class="form-control" id="photo" name="imageLink"  required
                            th:field="${studentDTO.imageLink}">
+                    <p class="small text-secondary" th:text="#{recommended}"></p>
                 </div>
                 <div class="mb-3">
                     <label for="diplomaFile" class="form-label" th:text="#{diplomaOrCertificateFile}"></label>
                     <input type="file" class="form-control" id="diplomaFile" name="diplomaOrCertificateLink"
                            th:field="${studentDTO.diplomaOrCertificateLink}" required>
+                    <p class="small text-secondary" th:text="#{recommended}"></p>
                 </div>
                 <div class="mb-3">
                     <label for="residencePermit" class="form-label" th:text="#{uzb}"></label>
                     <input type="file" class="form-control" id="residencePermit" name="testimonyFileLink"
                            th:field="${studentDTO.testimonyFileLink}">
+                    <p class="small text-secondary" th:text="#{recommended}"></p>
                 </div>
 
                 <h5 class="mt-3" th:text="#{agreement}"></h5>
                 <p class="lead" th:text="#{policy}"></p>
 
 
-                <button type="submit" class="btn btn-primary w-100" th:text="#{sendBtn}" onclick="return confirm('Men roziman')"></button>
+                <button type="submit" class="btn btn-primary w-100" th:text="#{sendBtn}" onclick="return confirm('')"></button>
 
             </div>
         </form>
