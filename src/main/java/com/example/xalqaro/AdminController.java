@@ -56,4 +56,11 @@ public class AdminController {
         studentService.changeStudentStatus(id, status);
         return "redirect:/admin/student/info?id=" + id;
     }
+
+    @GetMapping("/error")
+    public String error(Model model) {
+        var user =  userService.getCurrentUser();
+        model.addAttribute("user", user);
+        return "admin";
+    }
 }
