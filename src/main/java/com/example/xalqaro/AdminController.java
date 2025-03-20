@@ -1,15 +1,18 @@
 package com.example.xalqaro;
 
+import com.example.xalqaro.storage.StorageService;
 import com.example.xalqaro.students.Student;
 import com.example.xalqaro.students.StudentService;
+import com.example.xalqaro.students.StudentStatusDTO;
 import com.example.xalqaro.user.User;
 import com.example.xalqaro.user.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +22,7 @@ import java.util.List;
 public class AdminController {
     private final UserService userService;
     private final StudentService studentService;
+    private final StorageService storageService;
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -29,6 +33,10 @@ public class AdminController {
     public String admin(Model model) {
         User user =  userService.getCurrentUser();
         model.addAttribute("user", user);
+        Integer activeCount = studentService.fetchActiveApplication();
+        model.addAttribute("activeCount", activeCount);
+        StudentStatusDTO counts = studentService.fetchStudentCountStatus();
+        model.addAttribute("counts", counts);
         return "admin";
     }
 
@@ -38,6 +46,8 @@ public class AdminController {
         model.addAttribute("user", user);
         List<Student> students = studentService.getStudents();
         model.addAttribute("students", students);
+        Integer activeCount = studentService.fetchActiveApplication();
+        model.addAttribute("activeCount", activeCount);
         return "students";
     }
 
@@ -48,6 +58,9 @@ public class AdminController {
         Student student = studentService.getStudent(id);
         model.addAttribute("student", student);
         model.addAttribute("title", student.getFirstName() + " " + student.getLastName());
+        Integer activeCount = studentService.fetchActiveApplication();
+        model.addAttribute("activeCount", activeCount);
+
         return "studentInfo";
     }
 
@@ -57,10 +70,16 @@ public class AdminController {
         return "redirect:/admin/student/info?id=" + id;
     }
 
-    @GetMapping("/error")
-    public String error(Model model) {
-        var user =  userService.getCurrentUser();
-        model.addAttribute("user", user);
-        return "admin";
+    @GetMapping("/admin/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
+        Resource file = storageService.loadAsResource(filename);
+
+        if (file == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 }

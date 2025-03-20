@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/image/urspi_new.png">
     <title>International</title>
     <!-- Custom CSS -->
     <link href="/css/admin.min.css" rel="stylesheet">
@@ -86,10 +86,63 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-                <div class="col-12">
-                    <div class="card">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-right border-orange">
                         <div class="card-body">
-                            This is some text within a card block.
+                            <div class="d-flex no-block align-items-center">
+                                <div>
+                                    <span class="text-orange display-6"><i class="ti-id-badge"></i></span>
+                                </div>
+                                <div class="ml-auto text-orange font-weight-bold">
+                                    <h2 th:text="${counts.statusOne}"></h2>
+                                    <h6 >Yangi arizalar</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-right border-dark">
+                        <div class="card-body">
+                            <div class="d-flex no-block align-items-center">
+                                <div>
+                                    <span class="text-dark display-6"><i class="ti-bookmark-alt"></i></span>
+                                </div>
+                                <div class="ml-auto text-dark font-weight-bold">
+                                    <h2 th:text="${counts.statusTwo}"></h2>
+                                    <h6 >Ko`rish jarayonida</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-right border-success">
+                        <div class="card-body">
+                            <div class="d-flex no-block align-items-center">
+                                <div>
+                                    <span class="text-success display-6"><i class="ti-save-alt"></i></span>
+                                </div>
+                                <div class="ml-auto text-success font-weight-bold">
+                                    <h2 th:text="${counts.statusThree}"></h2>
+                                    <h6>Qabul qilinganalr</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-right border-danger">
+                        <div class="card-body">
+                            <div class="d-flex no-block align-items-center">
+                                <div>
+                                    <span class="text-danger display-6"><i class="ti-na"></i></span>
+                                </div>
+                                <div class="ml-auto text-danger font-weight-bold">
+                                    <h2 th:text="${counts.statusFour}"></h2>
+                                    <h6 >Rad qilinganlar</h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

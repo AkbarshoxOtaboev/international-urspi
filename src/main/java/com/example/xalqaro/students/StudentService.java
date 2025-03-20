@@ -9,4 +9,6 @@ public interface StudentService {
     boolean existsByEmail(String email);
     boolean existsByPhone(String phone);
     void changeStudentStatus(Long id, Integer status);
+    Integer fetchActiveApplication();
+    StudentStatusDTO fetchStudentCountStatus();
 }

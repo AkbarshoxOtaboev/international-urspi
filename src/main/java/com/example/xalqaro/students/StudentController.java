@@ -3,21 +3,15 @@ package com.example.xalqaro.students;
 import com.example.xalqaro.direction.Direction;
 import com.example.xalqaro.direction.DirectionService;
 import com.example.xalqaro.storage.StorageService;
-import com.example.xalqaro.user.User;
 import com.example.xalqaro.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -56,20 +50,5 @@ public class StudentController {
     @GetMapping("/success")
     public String success(Model model) {
         return "success";
-    }
-
-
-
-    @GetMapping("/admin/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
-        Resource file = storageService.loadAsResource(filename);
-
-        if (file == null)
-            return ResponseEntity.notFound().build();
-
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 }

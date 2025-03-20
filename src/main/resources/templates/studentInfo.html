@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/image/urspi_new.png">
     <title>International</title>
     <!-- Custom CSS -->
     <link href="/css/admin.min.css" rel="stylesheet">
@@ -95,7 +95,7 @@
                             <div class="d-flex justify-content-start">
                                 <a th:href="@{/admin/change/status(id=${student.id}, status=2)}" class="btn btn-outline-secondary m-2">Qabul qilish </a>
                                 <a th:classappend="${student.status != 2} ? 'disabled'" th:href="@{/admin/change/status(id=${student.id}, status=3)}" class="btn btn-outline-success m-2">Tasdiqlash</a>
-                                <a th:classappend="${student.status != 2} ? 'disabled'" th:href="@{/admin/change/status(id=${student.id}, status=4)}" class="btn btn-outline-danger m-2">Tasdiqlash</a>
+                                <a th:classappend="${student.status != 2} ? 'disabled'" th:href="@{/admin/change/status(id=${student.id}, status=4)}" class="btn btn-outline-danger m-2">Rad qilish</a>
                             </div>
                             <div class="row">
                                 <div class="col-7">

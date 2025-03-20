@@ -1,6 +1,7 @@
 package com.example.xalqaro.students;
 
 import com.example.xalqaro.storage.StorageService;
+import jakarta.persistence.Tuple;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +61,21 @@ public class StudentServiceImplement implements StudentService {
         Student student = getStudent(id);
         student.setStatus(status);
         studentRepository.saveAndFlush(student);
+    }
+
+    @Override
+    public Integer fetchActiveApplication() {
+        return studentRepository.countByActiveStatus();
+    }
+
+    @Override
+    public StudentStatusDTO fetchStudentCountStatus() {
+        Object[] result = studentRepository.countsStudentStatusRaw().get(0);
+        return new StudentStatusDTO(
+                ((Number) result[0]).intValue(),
+                ((Number) result[1]).intValue(),
+                ((Number) result[2]).intValue(),
+                ((Number) result[3]).intValue()
+        );
     }
 }
